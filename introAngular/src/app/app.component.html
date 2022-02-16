@@ -1,0 +1,32 @@
+<app-header-menu></app-header-menu>
+
+<div class="container">
+    <h1>{{ title }}</h1>
+    <p [innerText]="title"></p>
+    <p>
+        Bu uygulama, {{creator}} tarafından {{generatedInfo}} tarihinde yapılmıştır.
+    </p>
+
+     <div class="row">
+         <div class="col-12">
+             <button class="btn btn-success" (click)="filter()"> {{getButtonText()}} </button>
+         </div>
+     </div>
+
+     <p>Yapılacak toplam iş: {{getItemsCount()}}</p>
+
+
+    <div *ngFor="let item of todoItems">
+        <div>
+            <input class="form-check-input" type="checkbox" name="" [(ngModel)]="item.isDone" id="">  {{item.task}}
+            <span [ngClass]="item.isDone ? 'bg-primary':'bg-danger'" class="badge rounded-pill">{{item.isDone ? 'yapıldı':'yapılmadı'}}</span>
+        </div>
+        <hr>
+    </div>
+
+    <div>
+        <input #task type="text" name="" class="form-control" placeholder="Yapılacak iş" value="" id="">
+        <button (click)="addNewTask(task.value)" class="btn btn-primary">Ekle</button>
+    </div>
+
+</div>
