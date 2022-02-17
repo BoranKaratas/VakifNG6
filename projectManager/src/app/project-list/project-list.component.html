@@ -1,1 +1,20 @@
-<p>project-list works!</p>
+<div class="container">
+    <div class="row m-3">
+        <div class="col-12">
+            <input type="text" placeholder="Aranacak Proje" class="form-control" [(ngModel)]="key" >
+        </div>
+    </div>
+    <div class="row" *ngFor="let project of projects | searchProject:key">
+        <div class="col-12 m-2">
+        <!-- <div>
+            <h3>{{project.name}}</h3>
+            <p>{{ project.description }}</p>
+            <ul *ngFor="let task of project.tasks">
+                <li>{{task.name}}</li>
+            </ul>
+        </div> -->
+        <app-project [active]="project"></app-project> 
+
+    </div>
+    </div>
+</div>
