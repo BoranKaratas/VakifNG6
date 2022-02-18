@@ -18,8 +18,12 @@ export class DepartmentMenuComponent implements OnInit {
 
   ngOnInit(): void {
                    this.service.getDepartments()
-                               .subscribe((data:Department[])=> this.departments = data);
+                               .subscribe((data:Department[])=> this.setData(data));
 
+  }
+  
+  setData(data:Department[]){
+    this.departments = data;
   }
 
 }
