@@ -1,1 +1,6 @@
-<p>add-department works!</p>
+<form #newDepartment="ngForm" (ngSubmit)="submitProject(newDepartment)">
+    <label>Departman Adı</label>
+    <input #name = "ngModel" required maxlength="50" name="name" type="text" class="form-control" [(ngModel)]="department.name">
+    <span class="alert alert-danger form-control" *ngIf="name.invalid && name.dirty" >Departman adı boş olamaz</span>
+    <button class="btn btn-warning">Ekle</button>
+</form>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, tap } from 'rxjs';
 import { Department } from '../models/department.model';
 
 import { DepartmentService } from '../services/department.service';
@@ -10,17 +10,26 @@ import { DepartmentService } from '../services/department.service';
   templateUrl: './department-menu.component.html',
   styleUrls: ['./department-menu.component.css']
 })
-export class DepartmentMenuComponent implements OnInit {
+export class DepartmentMenuComponent implements OnInit, OnDestroy {
 
   constructor(private service: DepartmentService) { }
 
+
   departments: Department[];
+  subscribe:Subscription
 
   ngOnInit(): void {
-                   this.service.getDepartments()
+             this.subscribe =   this.service.getDepartments()
                                .subscribe((data:Department[])=> this.setData(data));
 
   }
+//! Angular View Engine bu bileşeni dispose ettiğinde, abonelikten
+  ngOnDestroy(): void {
+      this.service.getDepartments().subscribe(x=>this.departments=[]);
+      
+  }
+
+
   
   setData(data:Department[]){
     this.departments = data;

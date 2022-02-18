@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Department } from '../models/department.model';
+import { departments } from '../models/mocks/department.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,9 @@ export class DepartmentService {
         return throwError(() => new Error(err.statusText));
       }))
   }
+
+ 
+
+
+
 }

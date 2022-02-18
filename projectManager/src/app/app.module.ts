@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchProjectPipe } from './pipes/search-project.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { AddDepartmentComponent } from './add-department/add-department.component'
+import { DepartmentService } from './services/department.service';
 
 @NgModule({
   declarations: [
