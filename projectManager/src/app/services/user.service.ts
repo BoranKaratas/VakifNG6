@@ -5,12 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  constructor() {
+    this.isSaveOnStorage();
+   }
   isLoggedIn: boolean = false;
 
   isSaveOnStorage(){
       let result = localStorage.getItem('isLogin')
-       result != null && result == 'Yes'
+      this.isLoggedIn =  result != null && result == 'Yes'
+      
    }
 
   loginUser(userName:string, password:string){
