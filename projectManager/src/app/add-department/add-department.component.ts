@@ -10,6 +10,7 @@ import { Department } from '../models/department.model';
 export class AddDepartmentComponent implements OnInit {
  
   department: Department = new Department();
+  description:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +24,8 @@ export class AddDepartmentComponent implements OnInit {
     if (form.valid) {
        console.log('veri post edilebilir');
        console.log('Her şey yolunda:',form.value);
+       this.department = form.value;
+       console.log('department onjesi',this.department);
     }
   }
 

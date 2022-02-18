@@ -1,6 +1,10 @@
 <form #newDepartment="ngForm" (ngSubmit)="submitProject(newDepartment)">
     <label>Departman Adı</label>
-    <input #name = "ngModel" required maxlength="50" name="name" type="text" class="form-control" [(ngModel)]="department.name">
-    <span class="alert alert-danger form-control" *ngIf="name.invalid && name.dirty" >Departman adı boş olamaz</span>
-    <button class="btn btn-warning">Ekle</button>
+    <input #depName="ngModel" required minlength="3" name="name" type="text" class="form-control" [(ngModel)]="department.name">
+    <span class="alert alert-danger form-control" *ngIf="depName.getError('required') && depName.invalid && depName.dirty" >Departman adı boş olamaz</span>
+    <span class="alert alert-danger form-control" *ngIf="depName.getError('minlength') && depName.invalid && depName.dirty" >Departman adı en az 3 karakter olmalı</span>
+    
+    <!-- <input #desc="ngModel" required minlength="3" name="descx" type="text" class="form-control" [(ngModel)]="description">
+    <span class="alert alert-danger form-control" *ngIf="desc.getError('required') && desc.invalid && desc.dirty" >Departman adı en az 3 karakter olmalı</span> -->
+    <button type="submit" class="btn btn-warning">Ekle</button>
 </form>

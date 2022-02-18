@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Department } from '../models/department.model';
@@ -19,6 +19,16 @@ export class DepartmentService {
       .pipe(catchError((err: HttpErrorResponse) => { 
         return throwError(() => new Error(err.statusText));
       }))
+  }
+
+  addDepartment(department:Department):Observable<Department>{
+    let option = {
+      headers: new HttpHeaders({
+         'Content-Type':'application/json',
+         'Authorization':'Basic username:password' 
+      })
+    };
+    return this.httpClient.post(this.url,department,option);
   }
 
  
